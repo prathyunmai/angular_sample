@@ -1,0 +1,23 @@
+thead{ 
+    color:#337ab7; 
+    font-size:24px;
+} 
+h4{
+    color:rgb(16, 65, 110); 
+    text-decoration:underline;
+}
+
+.boxContainer{
+    background-color: #dee5eb;
+    box-shadow: 5px 5px 20px rgb(147, 185, 229);
+}
+
+.high{
+    color:red;
+    font-weight:700;
+    font-size:18px;
+}
+
+.low{
+    color:green;
+}

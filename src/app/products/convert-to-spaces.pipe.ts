@@ -1,0 +1,17 @@
+import { Pipe, PipeTransform } from "@angular/core";
+
+
+
+@Pipe({
+    name:'convertToSpace'
+})
+export class ConvertToSpacesPipe implements PipeTransform{
+    transform(value:string,character:string ) {
+        return value.replace(character,' ');
+    }
+
+}
+
+// gdn-0011 >>> gdn 0011
+// value:string == gdn-0011 
+// character:string == '-'

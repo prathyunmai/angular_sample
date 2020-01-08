@@ -1,0 +1,55 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body boxContainer">
+        <div class="row">
+            <div class="col-md-2">
+                Filter By 
+            </div>
+            <div class="col-md-5">
+                <input type="text" [(ngModel)]="listFilter"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Filtered Text :: {{listFilter}} </h4>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table"  *ngIf="products && products.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary" (click)="toggleImage()">
+                                {{ showImage ? 'Hide' : 'Show'}} Image
+                            </button>
+                        </th>
+                        <th>Product Name</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let product of products | productFilter:listFilter">
+                            <td>
+                                <img *ngIf="showImage"
+                                    [src]="product.imageUrl"
+                                    [style.width.px]='imageWidth'
+                                    [style.margin.px]='imageMargin'
+                                />
+                            </td>
+                            <td>{{product.productName | uppercase}}</td>
+                            <td>{{product.productCode | lowercase | convertToSpace:'-'}}</td>
+                            <td>{{product.releaseDate}}</td>
+                            <td [className]="product.price > 15 ? 'high' : 'low'">{{product.price | currency:'USD':true}}</td>
+                            <td><pm-star [rating]="product.starRating"></pm-star></td>
+                        </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
